@@ -47,11 +47,13 @@ function Income() {
     });
 
     useEffect(() => {
-        localStorage.setItem(
-        "incomeRecords",
-        JSON.stringify(incomeRecords)
-        );
-      }, [incomeRecords]);
+      localStorage.setItem(
+      "incomeRecords",
+      JSON.stringify(incomeRecords)
+    );
+
+      window.dispatchEvent(new Event("financeDataUpdated"));
+    }, [incomeRecords]);
 
   const [formData, setFormData] = useState({
     title: "",

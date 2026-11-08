@@ -1,0 +1,300 @@
+
+/* ==============================
+   REPORTS PAGE
+============================== */
+
+.reports-page {
+  width: 100%;
+}
+
+.reports-heading {
+  margin-bottom: 30px;
+}
+
+.reports-heading h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.reports-heading p {
+  color: #9CA3AF;
+  font-size: 14px;
+}
+
+/* ==============================
+   FINANCIAL SUMMARY
+============================== */
+
+.reports-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.reports-summary-card {
+  background: #1A1F2E;
+  border: 1px solid #2A3040;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.reports-summary-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.income-icon {
+  background: rgba(249, 115, 22, 0.12);
+  color: #F97316;
+}
+
+.expense-icon {
+  background: rgba(96, 165, 250, 0.12);
+  color: #60A5FA;
+}
+
+.balance-icon {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ADE80;
+}
+
+.reports-summary-card p {
+  color: #9CA3AF;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.reports-summary-card h3 {
+  font-size: 23px;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.reports-summary-card span {
+  color: #9CA3AF;
+  font-size: 12px;
+}
+
+.positive-balance {
+  color: #4ADE80;
+}
+
+.negative-balance {
+  color: #F87171;
+}
+
+/* ==============================
+   CHART CARDS
+============================== */
+
+.reports-chart-card {
+  background: #1A1F2E;
+  border: 1px solid #2A3040;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 25px;
+}
+
+.reports-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.reports-card-heading h3 {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.reports-card-heading p {
+  color: #9CA3AF;
+  font-size: 13px;
+}
+
+.reports-chart {
+  width: 100%;
+  height: 320px;
+}
+
+/* ==============================
+   EXPENSE BREAKDOWN
+============================== */
+
+.reports-breakdown-heading {
+  align-items: center;
+}
+
+.reports-title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.reports-title-with-icon svg {
+  color: #F97316;
+}
+
+.reports-title-with-icon h3 {
+  margin-bottom: 0;
+}
+
+.reports-month-filter {
+  padding: 10px 12px;
+  background: #10131D;
+  color: #F5F5F5;
+  border: 1px solid #2A3040;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.reports-month-filter:focus {
+  border-color: #F97316;
+}
+
+.reports-breakdown-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.reports-pie-chart {
+  width: 100%;
+  height: 280px;
+}
+
+.reports-empty-chart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #9CA3AF;
+  text-align: center;
+}
+
+.reports-empty-chart svg {
+  color: #F97316;
+}
+
+.reports-empty-chart p {
+  font-size: 13px;
+}
+
+.reports-category-total {
+  padding-bottom: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #2A3040;
+}
+
+.reports-category-total p {
+  color: #9CA3AF;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.reports-category-total h3 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+.reports-category-total span {
+  color: #9CA3AF;
+  font-size: 12px;
+}
+
+.reports-category-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #2A3040;
+}
+
+.reports-category-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 13px;
+}
+
+.reports-category-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.reports-category-info strong {
+  margin-left: auto;
+  color: #F5F5F5;
+}
+
+.reports-category-item > p {
+  color: #9CA3AF;
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+.reports-no-categories {
+  color: #9CA3AF;
+  font-size: 13px;
+  padding: 15px 0;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 900px) {
+  .reports-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reports-breakdown-content {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-pie-chart {
+    height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reports-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-chart-card {
+    padding: 17px;
+  }
+
+  .reports-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reports-chart {
+    height: 280px;
+  }
+
+  .reports-breakdown-heading {
+    flex-direction: column;
+  }
+
+  .reports-month-filter {
+    width: 100%;
+  }
+}

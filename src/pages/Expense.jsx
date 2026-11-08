@@ -58,6 +58,8 @@ function Expense() {
       "expenseRecords",
       JSON.stringify(expenseRecords)
     );
+
+      window.dispatchEvent(new Event("financeDataUpdated"));
     }, [expenseRecords]);
 
   const [formData, setFormData] = useState({
