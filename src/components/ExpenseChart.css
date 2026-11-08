@@ -1,0 +1,71 @@
+.expense-chart-card {
+  background: #171A26;
+  border: 1px solid #292D3B;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-header h3 {
+  font-size: 16px;
+  color: #F5F5F5;
+  margin-bottom: 6px;
+}
+
+.section-header p {
+  color: #9297A8;
+  font-size: 12px;
+}
+
+.chart-period {
+  background: #272B3A;
+  color: #A6AABC;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 230px;
+  margin-top: 15px;
+}
+
+.expense-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.legend-item,
+.legend-label {
+  display: flex;
+  align-items: center;
+}
+
+.legend-item {
+  justify-content: space-between;
+  font-size: 12px;
+  color: #A6AABC;
+}
+
+.legend-label {
+  gap: 9px;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.legend-item strong {
+  color: #F5F5F5;
+}

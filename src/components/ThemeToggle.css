@@ -1,0 +1,8 @@
+.theme-toggle {
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: #F97316;
+  transform: rotate(15deg);
+}

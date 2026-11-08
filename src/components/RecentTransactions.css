@@ -1,0 +1,74 @@
+.transactions-card {
+  background: #171A26;
+  border: 1px solid #292D3B;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.view-all-btn {
+  background: transparent;
+  border: none;
+  color: #F97316;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #292D3B;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.transaction-icon {
+  width: 40px;
+  height: 40px;
+  background: #272B3A;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F97316;
+}
+
+.transaction-info h4 {
+  color: #F5F5F5;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.transaction-info p {
+  color: #9297A8;
+  font-size: 11px;
+}
+
+.transaction-item strong {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.income-amount {
+  color: #4ADE80;
+}
+
+.expense-amount {
+  color: #F87171;
+}

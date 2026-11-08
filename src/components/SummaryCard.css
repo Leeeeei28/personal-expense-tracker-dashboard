@@ -1,0 +1,40 @@
+.summary-card {
+  background: #171A26;
+  border: 1px solid #292D3B;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-title {
+  color: #A6AABC;
+  font-size: 14px;
+}
+
+.summary-icon {
+  width: 42px;
+  height: 42px;
+  background: #272B3A;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-card h2 {
+  font-size: 25px;
+  color: #F5F5F5;
+}
+
+.summary-card p {
+  font-size: 12px;
+  color: #9297A8;
+}
