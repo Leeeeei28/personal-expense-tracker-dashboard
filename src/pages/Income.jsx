@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";  
 
 import {
   Wallet,
@@ -7,36 +7,51 @@ import {
   Plus,
   X,
   Trash2,
+  Pencil,
 } from "lucide-react";
 
 import "./Income.css";
 
 function Income() {
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
 
-  const [incomeRecords, setIncomeRecords] = useState([
-    {
-      id: 1,
-      title: "Monthly Allowance",
-      category: "Allowance",
-      date: "2026-11-06",
-      amount: 5000,
-    },
-    {
-      id: 2,
-      title: "Freelance Project",
-      category: "Freelance",
-      date: "2026-11-04",
-      amount: 3500,
-    },
-    {
-      id: 3,
-      title: "Part-time Work",
-      category: "Salary",
-      date: "2026-11-01",
-      amount: 8000,
-    },
-  ]);
+  const [incomeRecords, setIncomeRecords] = useState(() => {
+  const savedIncome = localStorage.getItem("incomeRecords");
+
+  return savedIncome
+    ? JSON.parse(savedIncome)
+    : [
+        {
+          id: 1,
+          title: "Monthly Allowance",
+          category: "Allowance",
+          date: "2026-11-06",
+          amount: 5000,
+        },
+        {
+          id: 2,
+          title: "Freelance Project",
+          category: "Freelance",
+          date: "2026-11-04",
+          amount: 3500,
+        },
+        {
+          id: 3,
+          title: "Part-time Work",
+          category: "Salary",
+          date: "2026-11-01",
+          amount: 8000,
+        },
+      ];
+    });
+
+    useEffect(() => {
+        localStorage.setItem(
+        "incomeRecords",
+        JSON.stringify(incomeRecords)
+        );
+      }, [incomeRecords]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -60,27 +75,35 @@ function Income() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newIncome = {
-      id: Date.now(),
-      title: formData.title,
-      category: formData.category,
-      date: formData.date,
-      amount: Number(formData.amount),
-    };
-
-    setIncomeRecords([newIncome, ...incomeRecords]);
-
-    setFormData({
-      title: "",
-      category: "Salary",
-      amount: "",
-      date: new Date().toISOString().split("T")[0],
-    });
-
-    setShowForm(false);
+  const incomeData = {
+    title: formData.title,
+    category: formData.category,
+    amount: Number(formData.amount),
+    date: formData.date,
   };
+
+  if (editingId !== null) {
+    setIncomeRecords((previousRecords) =>
+      previousRecords.map((income) =>
+        income.id === editingId
+          ? { ...income, ...incomeData }
+          : income
+      )
+    );
+  } else {
+    setIncomeRecords((previousRecords) => [
+      {
+        id: Date.now(),
+        ...incomeData,
+      },
+      ...previousRecords,
+    ]);
+  }
+
+  handleCancelForm();
+};
 
   const handleDelete = (id) => {
   const confirmDelete = window.confirm(
@@ -92,6 +115,31 @@ function Income() {
       previousRecords.filter((income) => income.id !== id)
     );
   }
+};
+
+const handleEdit = (income) => {
+  setEditingId(income.id);
+
+  setFormData({
+    title: income.title,
+    category: income.category,
+    amount: income.amount,
+    date: income.date,
+  });
+
+  setShowForm(true);
+};
+
+const handleCancelForm = () => {
+  setShowForm(false);
+  setEditingId(null);
+
+  setFormData({
+    title: "",
+    category: "Salary",
+    amount: "",
+    date: new Date().toISOString().split("T")[0],
+  });
 };
 
   return (
@@ -114,11 +162,11 @@ function Income() {
       {showForm && (
         <div className="income-form-card">
           <div className="income-form-header">
-            <h3>Add New Income</h3>
+            <h3>{editingId !== null ? "Edit Income" : "Add New Income"}</h3>
 
             <button
               type="button"
-              onClick={() => setShowForm(false)}
+              onClick={handleCancelForm}
               className="close-income-form"
             >
               <X size={20} />
@@ -182,7 +230,7 @@ function Income() {
             </div>
 
             <button type="submit" className="save-income-btn">
-              Save Income
+              {editingId !== null ? "Update Income" : "Save Income"}
             </button>
           </form>
         </div>
@@ -255,13 +303,23 @@ function Income() {
                     +₱{income.amount.toLocaleString("en-PH")}
                   </td>
                   <td>
-                        <button
-                            className="delete-income-btn"
-                            onClick={() => handleDelete(income.id)}
-                            title="Delete income"
-                        >
-                            <Trash2 size={17} />
-                        </button>
+                    <div className="income-actions">
+                      <button
+                        className="edit-income-btn"
+                        onClick={() => handleEdit(income)}
+                        title="Edit income"
+                      >
+                        <Pencil size={17} />
+                      </button>
+
+                      <button
+                        className="delete-income-btn"
+                        onClick={() => handleDelete(income.id)}
+                        title="Delete income"
+                      >
+                        <Trash2 size={17} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -261,3 +261,30 @@
 .delete-income-btn:hover {
   background: #3B2028;
 }
+
+
+.income-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-income-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: transparent;
+  color: #60A5FA;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.edit-income-btn:hover {
+  background: #1E3048;
+}
+
+.delete-income-btn:hover {
+  background: #3B2028;
+}

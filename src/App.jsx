@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 import {
@@ -15,6 +14,8 @@ import ExpenseChart from "./components/ExpenseChart";
 import RecentTransactions from "./components/RecentTransactions";
 
 import Income from "./pages/Income";
+import Expense from "./pages/Expense";
+import Transactions from "./pages/Transactions";
 
 import "./App.css";
 
@@ -83,6 +84,8 @@ function App() {
         )}
 
         {activePage === "Income" && <Income />}
+        {activePage === "Expenses" && <Expense />}
+        {activePage === "Transactions" && <Transactions />}
       </main>
     </div>
   );
