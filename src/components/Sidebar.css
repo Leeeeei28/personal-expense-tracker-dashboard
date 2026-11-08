@@ -87,3 +87,17 @@
   margin-top: 10px;
   color: #F87171;
 }
+
+.sidebar nav .nav-item {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.sidebar nav .nav-item.active {
+  background: #F97316;
+  color: white;
+}

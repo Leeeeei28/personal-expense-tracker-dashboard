@@ -1,3 +1,4 @@
+
 import {
   LayoutDashboard,
   Wallet,
@@ -10,9 +11,10 @@ import {
   CircleHelp,
   LogOut,
 } from "lucide-react";
+
 import "./Sidebar.css";
 
-function Sidebar() {
+function Sidebar({ activePage, setActivePage }) {
   const menuItems = [
     { name: "Overview", icon: LayoutDashboard },
     { name: "Income", icon: Wallet },
@@ -40,16 +42,16 @@ function Sidebar() {
             const Icon = item.icon;
 
             return (
-              <a
-                href="#"
+              <button
                 key={item.name}
+                onClick={() => setActivePage(item.name)}
                 className={`nav-item ${
-                  item.name === "Overview" ? "active" : ""
+                  activePage === item.name ? "active" : ""
                 }`}
               >
                 <Icon size={20} />
                 <span>{item.name}</span>
-              </a>
+              </button>
             );
           })}
         </nav>

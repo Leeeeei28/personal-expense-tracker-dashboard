@@ -1,8 +1,11 @@
+
+import { useState } from "react";
+
 import {
   Wallet,
   TrendingUp,
   TrendingDown,
-  PiggyBank
+  PiggyBank,
 } from "lucide-react";
 
 import Sidebar from "./components/Sidebar";
@@ -11,9 +14,13 @@ import SummaryCard from "./components/SummaryCard";
 import ExpenseChart from "./components/ExpenseChart";
 import RecentTransactions from "./components/RecentTransactions";
 
+import Income from "./pages/Income";
+
 import "./App.css";
 
 function App() {
+  const [activePage, setActivePage] = useState("Overview");
+
   const summaryData = [
     {
       title: "Total Balance",
@@ -47,26 +54,35 @@ function App() {
 
   return (
     <div className="app-container">
-      <Sidebar />
+      <Sidebar
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
 
       <main className="main-content">
         <Header />
 
-        <div className="dashboard-heading">
-          <h2>Dashboard Overview</h2>
-          <p>Monitor your financial activities.</p>
-        </div>
+        {activePage === "Overview" && (
+          <>
+            <div className="dashboard-heading">
+              <h2>Dashboard Overview</h2>
+              <p>Monitor your financial activities.</p>
+            </div>
 
-        <div className="summary-grid">
-          {summaryData.map((item) => (
-            <SummaryCard key={item.title} {...item} />
-          ))}
-        </div>
+            <div className="summary-grid">
+              {summaryData.map((item) => (
+                <SummaryCard key={item.title} {...item} />
+              ))}
+            </div>
 
-        <div className="dashboard-bottom">
-          <ExpenseChart />
-          <RecentTransactions />
-        </div>
+            <div className="dashboard-bottom">
+              <ExpenseChart />
+              <RecentTransactions />
+            </div>
+          </>
+        )}
+
+        {activePage === "Income" && <Income />}
       </main>
     </div>
   );
