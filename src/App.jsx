@@ -16,6 +16,7 @@ import RecentTransactions from "./components/RecentTransactions";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Transactions from "./pages/Transactions";
+import Budgets from "./pages/Budgets";
 
 import "./App.css";
 
@@ -86,6 +87,7 @@ function App() {
         {activePage === "Income" && <Income />}
         {activePage === "Expenses" && <Expense />}
         {activePage === "Transactions" && <Transactions />}
+        {activePage === "Budgets" && <Budgets />}
       </main>
     </div>
   );

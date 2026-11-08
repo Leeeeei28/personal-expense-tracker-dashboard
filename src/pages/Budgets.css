@@ -1,0 +1,142 @@
+.budgets-page {
+  width: 100%;
+}
+
+.budgets-heading {
+  margin-bottom: 30px;
+}
+
+.budgets-heading h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.budgets-heading p {
+  color: #9CA3AF;
+  font-size: 14px;
+}
+
+.budget-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.budget-summary-card {
+  background: #1A1F2E;
+  border: 1px solid #2A3040;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.budget-summary-card svg {
+  color: #F97316;
+  margin-bottom: 15px;
+}
+
+.budget-summary-card p {
+  color: #9CA3AF;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.budget-summary-card h2 {
+  font-size: 24px;
+}
+
+@media (max-width: 700px) {
+  .budget-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+.budget-list {
+  background: #1A1F2E;
+  border: 1px solid #2A3040;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.budget-list-header {
+  margin-bottom: 22px;
+}
+
+.budget-list-header h3 {
+  margin-bottom: 6px;
+}
+
+.budget-list-header p {
+  color: #9CA3AF;
+  font-size: 13px;
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.budget-card {
+  background: #10131D;
+  border: 1px solid #2A3040;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.budget-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.budget-card-header span {
+  color: #F97316;
+  font-weight: 600;
+}
+
+.budget-card h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.budget-card h3 span {
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.budget-progress {
+  height: 8px;
+  background: #2A3040;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.budget-progress-fill {
+  height: 100%;
+  background: #F97316;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.budget-card p {
+  color: #9CA3AF;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  .budget-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.budget-progress-fill.over-budget {
+  background: #EF4444;
+}
+
+.budget-card p.budget-warning {
+  color: #EF4444;
+  font-weight: 600;
+}
