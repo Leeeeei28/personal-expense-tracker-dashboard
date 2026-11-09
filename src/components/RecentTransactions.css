@@ -72,3 +72,26 @@
 .expense-amount {
   color: #F87171;
 }
+
+
+.transactions-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 35px 10px;
+  text-align: center;
+}
+
+.transactions-empty p {
+  color: #F5F5F5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.transactions-empty span {
+  color: #9297A8;
+  font-size: 12px;
+}
+

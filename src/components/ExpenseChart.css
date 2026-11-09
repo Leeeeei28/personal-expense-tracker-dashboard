@@ -69,3 +69,39 @@
 .legend-item strong {
   color: #F5F5F5;
 }
+
+.legend-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #292D3B;
+  padding-top: 14px;
+  color: #F5F5F5;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.legend-total strong {
+  color: #F97316;
+}
+
+.chart-empty {
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.chart-empty p {
+  color: #F5F5F5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chart-empty span {
+  color: #9297A8;
+  font-size: 12px;
+}

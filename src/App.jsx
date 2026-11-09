@@ -185,7 +185,9 @@ function App() {
 
             <div className="dashboard-bottom">
               <ExpenseChart />
-              <RecentTransactions />
+              <RecentTransactions
+                onViewAll={() => setActivePage("Transactions")}
+              />
             </div>
           </>
         )}

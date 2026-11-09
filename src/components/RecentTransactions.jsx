@@ -1,47 +1,85 @@
+
+import { useState, useEffect } from "react";
+
 import {
   ShoppingBag,
   Car,
   Wallet,
   Receipt,
+  GraduationCap,
+  HeartPulse,
+  Film,
+  Briefcase,
+  ArrowRightLeft,
 } from "lucide-react";
 
 import "./RecentTransactions.css";
 
-function RecentTransactions() {
-  const transactions = [
-    {
-      id: 1,
-      title: "Grocery Shopping",
-      category: "Food",
-      date: "Nov 08, 2026",
-      amount: -1500,
-      icon: ShoppingBag,
-    },
-    {
-      id: 2,
-      title: "Transportation",
-      category: "Travel",
-      date: "Nov 07, 2026",
-      amount: -250,
-      icon: Car,
-    },
-    {
-      id: 3,
-      title: "Monthly Allowance",
-      category: "Income",
-      date: "Nov 06, 2026",
-      amount: 5000,
-      icon: Wallet,
-    },
-    {
-      id: 4,
-      title: "Electricity Bill",
-      category: "Bills",
-      date: "Nov 05, 2026",
-      amount: -1200,
-      icon: Receipt,
-    },
-  ];
+const categoryIcons = {
+  Food: ShoppingBag,
+  Travel: Car,
+  Transportation: Car,
+  Bills: Receipt,
+  Shopping: ShoppingBag,
+  Health: HeartPulse,
+  Education: GraduationCap,
+  Entertainment: Film,
+  Salary: Briefcase,
+  Allowance: Wallet,
+  Freelance: Wallet,
+  Business: Briefcase,
+  Investment: Wallet,
+  Other: ArrowRightLeft,
+};
+
+function RecentTransactions({ onViewAll }) {
+  const [transactions, setTransactions] = useState([]);
+
+  const loadTransactions = () => {
+    const income = JSON.parse(
+      localStorage.getItem("incomeRecords") || "[]"
+    );
+
+    const expenses = JSON.parse(
+      localStorage.getItem("expenseRecords") || "[]"
+    );
+
+    const combinedTransactions = [
+      ...income.map((record) => ({
+        ...record,
+        type: "income",
+        amount: Math.abs(Number(record.amount || 0)),
+      })),
+
+      ...expenses.map((record) => ({
+        ...record,
+        type: "expense",
+        amount: -Math.abs(Number(record.amount || 0)),
+      })),
+    ];
+
+    combinedTransactions.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+    setTransactions(combinedTransactions.slice(0, 5));
+  };
+
+  useEffect(() => {
+    loadTransactions();
+
+    window.addEventListener("financeDataUpdated", loadTransactions);
+    window.addEventListener("storage", loadTransactions);
+
+    return () => {
+      window.removeEventListener(
+        "financeDataUpdated",
+        loadTransactions
+      );
+
+      window.removeEventListener("storage", loadTransactions);
+    };
+  }, []);
 
   return (
     <div className="transactions-card">
@@ -51,41 +89,66 @@ function RecentTransactions() {
           <p>Your latest financial activities</p>
         </div>
 
-        <button className="view-all-btn">View All</button>
+        <button
+          className="view-all-btn"
+          onClick={onViewAll}
+        >
+          View All
+        </button>
       </div>
 
       <div className="transactions-list">
-        {transactions.map((transaction) => {
-          const Icon = transaction.icon;
+        {transactions.length > 0 ? (
+          transactions.map((transaction) => {
+            const Icon =
+              transaction.type === "income"
+                ? Wallet
+                : categoryIcons[transaction.category] || Receipt;
 
-          return (
-            <div className="transaction-item" key={transaction.id}>
-              <div className="transaction-info">
-                <div className="transaction-icon">
-                  <Icon size={19} />
-                </div>
-
-                <div>
-                  <h4>{transaction.title}</h4>
-                  <p>
-                    {transaction.category} · {transaction.date}
-                  </p>
-                </div>
-              </div>
-
-              <strong
-                className={
-                  transaction.amount > 0
-                    ? "income-amount"
-                    : "expense-amount"
-                }
+            return (
+              <div
+                className="transaction-item"
+                key={`${transaction.type}-${transaction.id}`}
               >
-                {transaction.amount > 0 ? "+" : "-"}₱
-                {Math.abs(transaction.amount).toLocaleString("en-PH")}
-              </strong>
-            </div>
-          );
-        })}
+                <div className="transaction-info">
+                  <div className="transaction-icon">
+                    <Icon size={19} />
+                  </div>
+
+                  <div>
+                    <h4>{transaction.title}</h4>
+                    <p>
+                      {transaction.category} ·{" "}
+                      {new Date(
+                        `${transaction.date}T00:00:00`
+                      ).toLocaleDateString("en-PH", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </div>
+
+                <strong
+                  className={
+                    transaction.amount > 0
+                      ? "income-amount"
+                      : "expense-amount"
+                  }
+                >
+                  {transaction.amount > 0 ? "+" : "-"}₱
+                  {Math.abs(transaction.amount).toLocaleString("en-PH")}
+                </strong>
+              </div>
+            );
+          })
+        ) : (
+          <div className="transactions-empty">
+            <p>No transactions yet.</p>
+            <span>Your income and expenses will appear here.</span>
+          </div>
+        )}
       </div>
     </div>
   );
