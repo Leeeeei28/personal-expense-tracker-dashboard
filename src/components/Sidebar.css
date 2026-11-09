@@ -1,3 +1,4 @@
+
 /* SIDEBAR */
 .sidebar {
   width: 260px;
@@ -83,11 +84,42 @@
   gap: 8px;
 }
 
-.logout {
+/* HELP & SUPPORT / SETTINGS / LOGOUT */
+.sidebar-bottom .nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #A6AABC;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-bottom .nav-item:hover {
+  background: #272B3A;
+  color: #F5F5F5;
+}
+
+/* LOGOUT */
+.sidebar-bottom .logout {
   margin-top: 10px;
   color: #F87171;
 }
 
+.sidebar-bottom .logout:hover {
+  background: rgba(248, 113, 113, 0.10);
+  color: #F87171;
+}
+
+/* MAIN MENU BUTTONS */
 .sidebar nav .nav-item {
   width: 100%;
   border: none;
@@ -100,4 +132,15 @@
 .sidebar nav .nav-item.active {
   background: #F97316;
   color: white;
+}
+
+/* ACTIVE BUTTON */
+.sidebar-bottom .nav-item.active {
+  background: #F97316;
+  color: #FFFFFF;
+}
+
+.sidebar-bottom .nav-item.active:hover {
+  background: #EA580C;
+  color: #FFFFFF;
 }
