@@ -1,4 +1,3 @@
-
 import {
   LayoutDashboard,
   Wallet,
@@ -14,7 +13,7 @@ import {
 
 import "./Sidebar.css";
 
-function Sidebar({ activePage, setActivePage }) {
+function Sidebar({ activePage, setActivePage, onLogout }) {
   const menuItems = [
     { name: "Overview", icon: LayoutDashboard },
     { name: "Income", icon: Wallet },
@@ -23,6 +22,11 @@ function Sidebar({ activePage, setActivePage }) {
     { name: "Budgets", icon: ChartPie },
     { name: "Savings", icon: PiggyBank },
     { name: "Reports", icon: ChartNoAxesCombined },
+  ];
+
+  const bottomItems = [
+    { name: "Help & Support", icon: CircleHelp },
+    { name: "Settings", icon: Settings },
   ];
 
   return (
@@ -58,20 +62,30 @@ function Sidebar({ activePage, setActivePage }) {
       </div>
 
       <div className="sidebar-bottom">
-        <a href="#" className="nav-item">
-          <CircleHelp size={20} />
-          <span>Help & Support</span>
-        </a>
+        {bottomItems.map((item) => {
+          const Icon = item.icon;
 
-        <a href="#" className="nav-item">
-          <Settings size={20} />
-          <span>Settings</span>
-        </a>
+          return (
+            <button
+              key={item.name}
+              onClick={() => setActivePage(item.name)}
+              className={`nav-item ${
+                activePage === item.name ? "active" : ""
+              }`}
+            >
+              <Icon size={20} />
+              <span>{item.name}</span>
+            </button>
+          );
+        })}
 
-        <a href="#" className="nav-item logout">
+        <button
+          onClick={onLogout}
+          className="nav-item logout"
+        >
           <LogOut size={20} />
           <span>Logout</span>
-        </a>
+        </button>
       </div>
     </aside>
   );

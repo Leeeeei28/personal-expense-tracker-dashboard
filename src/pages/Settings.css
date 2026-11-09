@@ -1,0 +1,83 @@
+.settings-page {
+  width: 100%;
+}
+
+.settings-heading {
+  margin-bottom: 30px;
+}
+
+.settings-heading h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.settings-heading p {
+  color: var(--text-muted, #B8B8B8);
+}
+
+.settings-section {
+  background: var(--card-bg, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #F59E0B;
+}
+
+.settings-section-heading h3 {
+  color: var(--text-color, #F5F1E8);
+  font-size: 18px;
+}
+
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.settings-option-info h4 {
+  margin-bottom: 6px;
+  color: var(--text-color, #F5F1E8);
+}
+
+.settings-option-info p {
+  color: var(--text-muted, #B8B8B8);
+  font-size: 14px;
+}
+
+.theme-setting-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #F59E0B;
+  color: #1C1C1C;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.theme-setting-button:hover {
+  opacity: 0.85;
+}
+
+.settings-value {
+  color: var(--text-color, #F5F1E8);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .settings-option {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

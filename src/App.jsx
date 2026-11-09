@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 import {
@@ -20,6 +19,8 @@ import Transactions from "./pages/Transactions";
 import Budgets from "./pages/Budgets";
 import Savings from "./pages/Savings";
 import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
+import HelpSupport from "./pages/HelpSupport";
 
 import "./App.css";
 
@@ -32,7 +33,6 @@ function App() {
     savings: [],
   });
 
-  // Load financial records from LocalStorage
   const loadFinanceData = () => {
     const income = JSON.parse(
       localStorage.getItem("incomeRecords") || "[]"
@@ -53,7 +53,6 @@ function App() {
     });
   };
 
-  // Listen for updates from other pages
   useEffect(() => {
     loadFinanceData();
 
@@ -74,14 +73,12 @@ function App() {
     };
   }, []);
 
-  // Get current month
   const now = new Date();
 
   const currentMonth = `${now.getFullYear()}-${String(
     now.getMonth() + 1
   ).padStart(2, "0")}`;
 
-  // Calculate current month's income
   const monthlyIncome = financeData.income
     .filter((record) => record.date?.slice(0, 7) === currentMonth)
     .reduce(
@@ -89,7 +86,6 @@ function App() {
       0
     );
 
-  // Calculate current month's expenses
   const monthlyExpenses = financeData.expenses
     .filter((record) => record.date?.slice(0, 7) === currentMonth)
     .reduce(
@@ -97,7 +93,6 @@ function App() {
       0
     );
 
-  // Calculate all-time balance
   const totalIncome = financeData.income.reduce(
     (total, record) => total + Number(record.amount || 0),
     0
@@ -110,13 +105,11 @@ function App() {
 
   const totalBalance = totalIncome - totalExpenses;
 
-  // Calculate total savings
   const totalSavings = financeData.savings.reduce(
     (total, goal) => total + Number(goal.saved || 0),
     0
   );
 
-  // Format currency
   const formatCurrency = (amount) =>
     `₱${amount.toLocaleString("en-PH", {
       maximumFractionDigits: 2,
@@ -153,11 +146,25 @@ function App() {
     },
   ];
 
+  const handleLogout = () => {
+    const confirmLogout = window.confirm(
+      "Are you sure you want to leave MyFinance?"
+    );
+
+    if (confirmLogout) {
+      setActivePage("Overview");
+      alert(
+        "You have returned to the dashboard. Login functionality can be added when authentication is implemented."
+      );
+    }
+  };
+
   return (
     <div className="app-container">
       <Sidebar
         activePage={activePage}
         setActivePage={setActivePage}
+        onLogout={handleLogout}
       />
 
       <main className="main-content">
@@ -189,6 +196,8 @@ function App() {
         {activePage === "Budgets" && <Budgets />}
         {activePage === "Savings" && <Savings />}
         {activePage === "Reports" && <Reports />}
+        {activePage === "Settings" && <Settings />}
+        {activePage === "Help & Support" && <HelpSupport />}
       </main>
     </div>
   );

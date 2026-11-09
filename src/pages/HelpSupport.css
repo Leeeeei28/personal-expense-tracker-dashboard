@@ -1,0 +1,93 @@
+.help-page {
+  width: 100%;
+}
+
+.help-heading {
+  margin-bottom: 30px;
+}
+
+.help-heading h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.help-heading p,
+.help-card p,
+.help-contact p {
+  color: var(--text-muted, #B8B8B8);
+}
+
+.help-welcome,
+.help-contact {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--card-bg, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 25px;
+}
+
+.help-welcome > svg,
+.help-contact > svg {
+  color: #F59E0B;
+  flex-shrink: 0;
+}
+
+.help-welcome h3,
+.help-contact h3 {
+  margin-bottom: 7px;
+  color: var(--text-color, #F5F1E8);
+}
+
+.help-section {
+  margin-bottom: 25px;
+}
+
+.help-section > h3 {
+  margin-bottom: 18px;
+  color: var(--text-color, #F5F1E8);
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.help-card {
+  background: var(--card-bg, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.help-card svg {
+  color: #F59E0B;
+  margin-bottom: 14px;
+}
+
+.help-card h4 {
+  color: var(--text-color, #F5F1E8);
+  margin-bottom: 8px;
+}
+
+.help-card p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.help-contact a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #F59E0B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+}
