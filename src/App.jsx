@@ -168,7 +168,7 @@ function App() {
       />
 
       <main className="main-content">
-        <Header />
+        <Header onNavigate={setActivePage} />
 
         {activePage === "Overview" && (
           <>
